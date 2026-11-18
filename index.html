@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Paróquia São José — Montadas/PB</title>
+  <!-- O visual está em style.css; os dados e as páginas estão em script.js -->
+  <style>/*
+  CORES PRINCIPAIS DO SITE:
+  Altere estes valores para mudar a aparência geral.
+  O bege é usado nos fundos; o bordô em botões, títulos e destaques.
+*/
+:root{
+  --cor-bege:#f5eee0; --cor-bordo:#6d1a2b; --cor-dourado:#b8923a;
+  --cor-branco:#fff; --cor-texto:#2b2220; --cor-suave:#e8dcc4;
+  --fonte-titulo:Georgia,"Times New Roman",serif;
+  --fonte-texto:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cor-bege);color:var(--cor-texto);font:16px/1.6 var(--fonte-texto)}
+h1,h2,h3{font-family:var(--fonte-titulo);color:var(--cor-bordo);line-height:1.2}
+a{color:var(--cor-bordo)}
+.wrap{max-width:1050px;margin:auto;padding:0 18px}
+.pular{position:absolute;left:-999px}.pular:focus{left:8px;top:8px;background:#fff;padding:8px;z-index:9}
+:focus-visible{outline:3px solid var(--cor-dourado);outline-offset:2px}
+
+.topo{background:var(--cor-bordo);border-bottom:4px solid var(--cor-dourado);position:sticky;top:0;z-index:5}
+.topo-in{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;padding:10px 18px}
+.marca{color:#fff;text-decoration:none;font-family:var(--fonte-titulo);font-size:1.25rem}
+.marca small{display:block;font:.72rem var(--fonte-texto);color:var(--cor-suave)}
+nav a{color:#fff;text-decoration:none;padding:6px 9px;border-radius:6px;font-size:.92rem;display:inline-block}
+nav a:hover,nav a.ativo{background:rgba(255,255,255,.16)}
+.admin-link{border:1px solid var(--cor-dourado)}
+.menu-btn{display:none;background:none;border:1px solid #fff;color:#fff;font-size:1.3rem;border-radius:6px;padding:2px 10px}
+.aviso-demo{background:var(--cor-suave);text-align:center;font-size:.82rem;padding:5px}
+
+main{padding:26px 18px 50px;max-width:1050px;margin:auto;min-height:60vh}
+.hero{background:linear-gradient(rgba(109,26,43,.88),rgba(109,26,43,.88)),var(--cor-bordo);color:#fff;border-radius:14px;padding:44px 28px;margin-bottom:26px}
+/* IMAGEM PRINCIPAL: para usar uma foto autorizada, troque o fundo acima por url("assets/imagens/fachada.jpg") */
+.hero h1{color:#fff;margin:0 0 8px;font-size:2.1rem}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.card{background:var(--cor-branco);border:1px solid var(--cor-suave);border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card h3{margin:.2rem 0}
+.etq{display:inline-block;background:var(--cor-suave);color:var(--cor-bordo);font-size:.75rem;border-radius:20px;padding:2px 10px}
+.etq.dest{background:var(--cor-dourado);color:#fff}
+.btn{display:inline-block;background:var(--cor-bordo);color:#fff;border:0;border-radius:8px;padding:10px 18px;font:inherit;cursor:pointer;text-decoration:none}
+.btn:hover{background:#561421}.btn.sec{background:#fff;color:var(--cor-bordo);border:1px solid var(--cor-bordo)}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.barra{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}
+input,select,textarea{font:inherit;padding:9px;border:1px solid #c9b88f;border-radius:8px;background:#fff;max-width:100%}
+label{display:block;margin:10px 0 3px;font-weight:600;font-size:.9rem}
+.erro{color:#a40e26;font-size:.85rem}.ok{background:#e4f2e3;border:1px solid #9cc79a;padding:12px;border-radius:8px}
+.vazio{text-align:center;padding:30px;color:#7a6a5a;border:2px dashed var(--cor-suave);border-radius:12px}
+.pendente{background:#fff8e1;border:1px dashed var(--cor-dourado);padding:10px;border-radius:8px;font-size:.9rem}
+.foto{height:130px;border-radius:8px;background:linear-gradient(135deg,var(--cor-suave),#d8c7a0);display:grid;place-items:center;color:#7a6a5a;font-size:.8rem;margin-bottom:8px;text-align:center}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.cal div{background:#fff;border:1px solid var(--cor-suave);min-height:62px;padding:3px;font-size:.72rem;border-radius:6px}
+.cal .cab{min-height:0;background:var(--cor-bordo);color:#fff;text-align:center}
+.cal b{display:block}.cal span{display:block;background:var(--cor-dourado);color:#fff;border-radius:4px;padding:0 3px;margin-top:2px}
+.linha{border-left:3px solid var(--cor-dourado);padding:0 0 18px 18px;margin-left:8px;position:relative}
+.linha::before{content:"";position:absolute;left:-8px;top:4px;width:13px;height:13px;border-radius:50%;background:var(--cor-bordo)}
+.painel{display:grid;grid-template-columns:200px 1fr;gap:20px}
+.lateral{background:#fff;border-radius:12px;padding:10px;border:1px solid var(--cor-suave);align-self:start}
+.lateral button{display:block;width:100%;text-align:left;background:none;border:0;padding:9px;border-radius:6px;font:inherit;cursor:pointer}
+.lateral button.ativo,.lateral button:hover{background:var(--cor-suave);color:var(--cor-bordo)}
+table{width:100%;border-collapse:collapse;background:#fff}th,td{padding:8px;border-bottom:1px solid var(--cor-suave);text-align:left;font-size:.9rem}
+th{background:var(--cor-bordo);color:#fff}.tab-wrap{overflow-x:auto}
+dialog{border:0;border-radius:12px;max-width:520px;width:92%;padding:20px}dialog::backdrop{background:rgba(0,0,0,.6)}
+#fechar{float:right;border:0;background:none;font-size:1.2rem;cursor:pointer}
+.rodape{background:var(--cor-bordo);color:#f0e6d0;padding:22px 0;border-top:4px solid var(--cor-dourado)}
+.rodape p{margin:.2rem 0}
+
+@media(max-width:760px){
+  .menu-btn{display:block}
+  nav{display:none;width:100%}nav.aberto{display:block}nav a{display:block}
+  .painel{grid-template-columns:1fr}.hero h1{font-size:1.6rem}
+}
+
+/* TELA DE BOAS-VINDAS */
+#boas-vindas{position:fixed;inset:0;z-index:20;background:var(--cor-bege);display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:30px;padding:30px max(24px,6vw)}
+#boas-vindas.oculta{display:none}
+.bv-texto h1{font-size:2.6rem;margin:0 0 12px}
+.bv-texto p{font-size:1.15rem;margin:0 0 24px}
+.bv-texto .btn{font-size:1.1rem;padding:12px 34px}
+.bv-img{height:min(70vh,460px);border-radius:14px;border:4px solid var(--cor-dourado);background:linear-gradient(135deg,var(--cor-suave),#d8c7a0);display:grid;place-items:center;color:#7a6a5a;text-align:center}
+@media(max-width:760px){#boas-vindas{grid-template-columns:1fr;align-content:center}.bv-img{height:220px;order:-1}.bv-texto h1{font-size:1.9rem}}
+</style>
+</head>
+<body>
+<!--
+  TELA DE BOAS-VINDAS (fachada): aparece antes do site.
+  - Para trocar o texto, edite o título e o parágrafo abaixo.
+  - Para trocar a imagem da igreja: apague a <div class="bv-img"> e use
+    <img src="assets/imagens/igreja.jpg" alt="Fachada da igreja"> (imagem autorizada).
+  - Na versão web o botão "Entrar" só abre o site (sem login).
+-->
+<section id="boas-vindas" aria-label="Boas-vindas">
+  <div class="bv-texto">
+    <h1>Paróquia Municipal de Montadas</h1>
+    <p>Seja bem-vindo ao site da Paróquia Municipal de Montadas.</p>
+    <button class="btn" id="entrar">Entrar</button>
+  </div>
+  <div class="bv-img" role="img" aria-label="Imagem de exemplo da igreja">Imagem da igreja (exemplo)</div>
+</section>
+  <a class="pular" href="#app">Pular para o conteúdo</a>
+  <header class="topo">
+    <div class="wrap topo-in">
+      <!-- LOGOTIPO: troque o texto abaixo por <img src="assets/imagens/logo.png" alt="Logo da paróquia"> quando houver logo oficial -->
+      <a class="marca" href="#inicio">✝ Paróquia São José <small>Montadas · PB</small></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false">☰</button>
+      <nav id="menu" aria-label="Principal">
+        <a href="#inicio">Início</a><a href="#agenda">Agenda</a><a href="#noticias">Notícias</a>
+        <a href="#comunidades">Comunidades</a><a href="#galeria">Galeria</a><a href="#memorial">Memorial</a>
+        <a href="#inscricoes">Inscrições</a><a href="#redes">Redes</a><a href="#contato">Contato</a>
+        <a href="#admin" class="admin-link">Área restrita</a>
+      </nav>
+    </div>
+  </header>
+  <div class="aviso-demo">Versão demonstrativa (somente visual). Nenhum dado é salvo e todo o conteúdo é de exemplo.</div>
+  <main id="app" tabindex="-1"></main>
+  <footer class="rodape">
+    <div class="wrap">
+      <!-- RODAPÉ: endereço, telefone e e-mail reais devem ser editados em script.js, no bloco CONFIG -->
+      <p><strong>Paróquia São José</strong> — Montadas, Paraíba</p>
+      <p>Endereço, telefone e e-mail: aguardando informações oficiais.</p>
+      <p><small>Dados pessoais tratados conforme a LGPD (a definir com o back-end).</small></p>
+    </div>
+  </footer>
+  <dialog id="modal"><button id="fechar" aria-label="Fechar">✕</button><div id="modal-corpo"></div></dialog>
+  <script>/* =====================================================
+   PARÓQUIA SÃO JOSÉ — VERSÃO DEMONSTRATIVA (SÓ FRONT-END)
+   Nada aqui é salvo em banco de dados. Os dados abaixo são
+   EXEMPLOS e devem ser trocados por informações oficiais.
+   ===================================================== */
+
+/* CONFIGURAÇÕES INSTITUCIONAIS
+   Preencha com os dados oficiais. Enquanto estiverem vazios,
+   o site mostra "aguardando informações" em vez de inventar dados. */
+const CONFIG = {
+  endereco: "",            // Ex.: "Rua X, 100, Centro, Montadas–PB"
+  telefone: "",
+  email: "",
+  whatsapp: "",            // Só números, com DDD. Ex.: 5583999999999
+  horarioSecretaria: "",
+  mapaLink: "",            // Link do Google Maps CONFIRMADO
+  instagram: "", facebook: "", youtube: "",
+  transmissaoEmbed: ""     // Link de incorporação da transmissão ao vivo
+};
+
+/* EVENTOS (DEMONSTRATIVOS) — para adicionar um evento, copie uma linha e altere. */
+const EVENTOS = [
+  {id:1,titulo:"Missa dominical (exemplo)",data:"2026-10-25",hora:"08:00",cat:"Missa",com:"Matriz",desc:"Horário de exemplo."},
+  {id:2,titulo:"Reunião pastoral (exemplo)",data:"2026-10-22",hora:"19:30",cat:"Reunião",com:"Matriz",desc:"Reunião de exemplo."},
+  {id:3,titulo:"Formação de catequistas (exemplo)",data:"2026-10-31",hora:"15:00",cat:"Formação",com:"Comunidade A",desc:"Formação de exemplo."},
+  {id:4,titulo:"Festa do padroeiro (exemplo)",data:"2026-11-08",hora:"18:00",cat:"Festa",com:"Comunidade B",desc:"Data fictícia."}
+];
+
+/* NOTÍCIAS (DEMONSTRATIVAS) — troque título, texto, autor, data e imagem de capa. */
+const NOTICIAS = [
+  {id:1,titulo:"Aviso de exemplo da secretaria",cat:"Avisos",dest:true,autor:"PASCOM (exemplo)",data:"2026-10-12",texto:"Texto demonstrativo. Substitua pelo comunicado oficial."},
+  {id:2,titulo:"Convite de exemplo para encontro",cat:"Convites",dest:false,autor:"PASCOM (exemplo)",data:"2026-10-08",texto:"Convite demonstrativo para mostrar o layout da página."},
+  {id:3,titulo:"Informativo de exemplo",cat:"Informativos",dest:false,autor:"PASCOM (exemplo)",data:"2026-10-01",texto:"Informativo demonstrativo."}
+];
+
+/* COMUNIDADES (NOMES FICTÍCIOS) — NÃO são capelas reais. Troque por dados oficiais. */
+const COMUNIDADES = [
+  {id:1,nome:"Comunidade A (exemplo)",tipo:"Central",padroeiro:"A definir",hist:"Histórico a ser cadastrado.",horario:"A definir"},
+  {id:2,nome:"Comunidade B (exemplo)",tipo:"Rural",padroeiro:"A definir",hist:"Histórico a ser cadastrado.",horario:"A definir"},
+  {id:3,nome:"Comunidade C (exemplo)",tipo:"Rural",padroeiro:"A definir",hist:"Histórico a ser cadastrado.",horario:"A definir"}
+];
+
+/* GALERIA — para adicionar foto: informe 'src' (imagem autorizada) e 'alt' (texto alternativo).
+   Atenção: fotos de crianças e adolescentes exigem autorização dos responsáveis. */
+const FOTOS = [
+  {id:1,legenda:"Celebração (exemplo)",ano:2025,tipo:"Celebração",src:"",alt:"Foto de exemplo"},
+  {id:2,legenda:"Festa do padroeiro (exemplo)",ano:2025,tipo:"Festa",src:"",alt:"Foto de exemplo"},
+  {id:3,legenda:"Encontro de jovens (exemplo)",ano:2024,tipo:"Evento",src:"",alt:"Foto de exemplo"}
+];
+
+/* MEMORIAL — NÃO invente datas ou nomes. Cadastre apenas registros oficiais. */
+const MEMORIAL = [
+  {titulo:"Fundação da paróquia",periodo:"Data oficial a cadastrar",desc:"Conteúdo demonstrativo."},
+  {titulo:"Primeiros párocos",periodo:"A cadastrar",desc:"Conteúdo demonstrativo."},
+  {titulo:"Marcos da comunidade",periodo:"A cadastrar",desc:"Conteúdo demonstrativo."}
+];
+
+/* INSCRIÇÕES — para criar atividade, copie uma linha. */
+const ATIVIDADES = [
+  {id:1,titulo:"Catequese infantil",prazo:"A definir",vagas:"—",aberta:true,menor:true},
+  {id:2,titulo:"Crisma",prazo:"A definir",vagas:"—",aberta:true,menor:true},
+  {id:3,titulo:"Encontro de casais",prazo:"A definir",vagas:"—",aberta:false,menor:false}
+];
+
+/* ---------- Funções auxiliares ---------- */
+const $ = (s,el=document)=>el.querySelector(s);
+const app = $("#app");
+const fmt = d=>new Date(d+"T12:00:00").toLocaleDateString("pt-BR");
+const esc = t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const pendente = t=>`<div class="pendente">⚠ ${t} — aguardando informação oficial (configurar em script.js, bloco CONFIG).</div>`;
+const vazio = t=>`<div class="vazio">${t}</div>`;
+const cardEvento = e=>`<article class="card"><span class="etq">${e.cat}</span><h3>${esc(e.titulo)}</h3><p>${fmt(e.data)} às ${e.hora}<br>${e.com}</p><small>${esc(e.desc)}</small></article>`;
+const cardNoticia = n=>`<article class="card">${n.dest?'<span class="etq dest">Destaque</span> ':""}<span class="etq">${n.cat}</span><h3>${esc(n.titulo)}</h3><small>${fmt(n.data)} · ${esc(n.autor)}</small><p><a href="#noticia-${n.id}">Ler completa →</a></p></article>`;
+const cardCom = c=>`<article class="card"><div class="foto">Foto da comunidade</div><span class="etq">${c.tipo}</span><h3>${esc(c.nome)}</h3><p><a href="#comunidade-${c.id}">Ver página →</a></p></article>`;
+
+/* ---------- Páginas ---------- */
+const paginas = {
+  inicio(){
+    return `<section class="hero">
+      <!-- TÍTULO E TEXTO PRINCIPAL: altere aqui -->
+      <h1>Paróquia São José</h1><p>Montadas · Paraíba — Seja bem-vindo à nossa comunidade de fé.</p>
+      <a class="btn sec" href="#agenda">Ver agenda</a> <a class="btn" style="border:1px solid #fff" href="#inscricoes">Inscrições</a></section>
+      <h2>Próximos eventos</h2><div class="grade">${EVENTOS.slice(0,3).map(cardEvento).join("")}</div>
+      <h2>Notícias recentes</h2><div class="grade">${NOTICIAS.map(cardNoticia).join("")}</div>
+      <h2>Comunidades</h2><div class="grade">${COMUNIDADES.map(cardCom).join("")}</div>
+      <h2>Atalhos</h2><div class="barra"><a class="btn sec" href="#galeria">Galeria</a><a class="btn sec" href="#redes">Redes sociais</a><a class="btn sec" href="#contato">Contato</a></div>`;
+  },
+
+  agenda(){
+    const cats=[...new Set(EVENTOS.map(e=>e.cat))];
+    return `<h1>Agenda paroquial</h1>
+      <div class="barra"><select id="fcat" aria-label="Categoria"><option value="">Todas as categorias</option>${cats.map(c=>`<option>${c}</option>`).join("")}</select>
+      <button class="btn sec" id="vl">Lista</button><button class="btn sec" id="vc">Calendário</button></div>
+      <div id="agenda-out"></div>
+      <h2>Escala litúrgica</h2>${pendente("A escala é cadastrada pela administração; sem dados ainda")}
+      <h2>Liturgia diária</h2>${pendente("Sem integração real; o conteúdo seria cadastrado manualmente")}`;
+  },
+  noticias(){
+    return `<h1>Notícias e comunicados</h1><div class="barra"><input id="busca" type="search" placeholder="Pesquisar..." aria-label="Pesquisar notícias"></div><div id="n-out" class="grade"></div>`;
+  },
+  comunidades(){
+    return `<h1>Comunidades</h1><p class="pendente">Nomes e dados são fictícios até o envio das informações oficiais.</p>
+      <div class="barra"><input id="busca" type="search" placeholder="Buscar comunidade..." aria-label="Buscar"><select id="ftipo" aria-label="Tipo"><option value="">Todas</option><option>Central</option><option>Rural</option></select></div><div id="c-out" class="grade"></div>`;
+  },
+  galeria(){
+    return `<h1>Acervo fotográfico</h1><div class="barra"><select id="fano" aria-label="Ano"><option value="">Todos os anos</option>${[...new Set(FOTOS.map(f=>f.ano))].map(a=>`<option>${a}</option>`).join("")}</select></div><div id="g-out" class="grade"></div>`;
+  },
+  memorial(){
+    return `<h1>Memorial paroquial</h1><p class="pendente">Registros históricos oficiais ainda precisam ser cadastrados.</p>${MEMORIAL.map(m=>`<div class="linha"><h3>${m.titulo}</h3><small>${m.periodo}</small><p>${m.desc}</p></div>`).join("")}`;
+  },
+  redes(){
+    const r=[["Instagram",CONFIG.instagram],["Facebook",CONFIG.facebook],["YouTube",CONFIG.youtube]];
+    return `<h1>Redes sociais e transmissões</h1><div class="grade">${r.map(([n,u])=>`<div class="card"><h3>${n}</h3>${u?`<a class="btn" href="${esc(u)}" target="_blank" rel="noopener">Abrir</a>`:pendente("Link não configurado")}</div>`).join("")}</div>
+      <h2>Transmissão ao vivo</h2>${CONFIG.transmissaoEmbed?`<iframe width="100%" height="360" src="${esc(CONFIG.transmissaoEmbed)}" title="Transmissão" allowfullscreen></iframe>`:vazio("Nenhuma transmissão configurada.")}`;
+  },
+  contato(){
+    const c=(t,v)=>`<div class="card"><h3>${t}</h3>${v?esc(v):pendente("Não informado")}</div>`;
+    return `<h1>Contato e localização</h1><div class="grade">${c("Endereço",CONFIG.endereco)}${c("Telefone",CONFIG.telefone)}${c("E-mail",CONFIG.email)}${c("Horário da secretaria",CONFIG.horarioSecretaria)}</div>
+      <p><a class="btn" ${CONFIG.whatsapp?`href="https://wa.me/${CONFIG.whatsapp}"`:"disabled aria-disabled='true'"}>Conversar no WhatsApp</a></p>
+      ${CONFIG.mapaLink?`<a href="${esc(CONFIG.mapaLink)}">Abrir mapa</a>`:pendente("Mapa só será exibido com localização confirmada")}`;
+  },
+  inscricoes(){
+    return `<h1>Inscrições e formações</h1><div class="grade">${ATIVIDADES.map(a=>`<article class="card"><span class="etq">${a.aberta?"Inscrições abertas":"Encerradas"}</span><h3>${a.titulo}</h3><p>Prazo: ${a.prazo}<br>Vagas: ${a.vagas}</p><button class="btn" ${a.aberta?"":"disabled"} data-insc="${a.id}">Inscrever-se</button></article>`).join("")}</div><div id="form-area"></div>`;
+  },
+  admin(){
+    return `<h1>Área restrita</h1><div class="card" style="max-width:380px"><p class="pendente">Login de demonstração: sem autenticação real. No sistema final, o acesso será validado no servidor.</p>
+      <form id="login" novalidate><label for="u">Usuário</label><input id="u"><label for="s">Senha</label><input id="s" type="password"><p class="erro" id="le"></p><button class="btn">Entrar</button></form></div>`;
+  }
+};
+
+/* ---------- Painel administrativo (demonstrativo) ---------- */
+function painel(){
+  const abas=["Resumo","Agenda","Notícias","Inscrições","Dízimo"];
+  app.innerHTML=`<div class="painel"><aside class="lateral">${abas.map((a,i)=>`<button data-aba="${a}" class="${i?"":"ativo"}">${a}</button>`).join("")}<button id="sair">Sair</button></aside><section id="aba-out"></section></div>`;
+  const conteudo={
+    Resumo:()=>`<h2>Resumo</h2><div class="grade"><div class="card"><h3>${EVENTOS.length}</h3>eventos próximos</div><div class="card"><h3>${NOTICIAS.length}</h3>notícias publicadas</div><div class="card"><h3>0</h3>inscrições recentes</div></div>`,
+    Agenda:()=>`<h2>Agenda</h2><div class="tab-wrap"><table><tr><th>Título</th><th>Data</th><th>Ação</th></tr>${EVENTOS.map(e=>`<tr><td>${e.titulo}</td><td>${fmt(e.data)}</td><td><button class="btn sec" data-del="${e.id}">Excluir</button></td></tr>`).join("")}</table></div><p><small>Alterações valem só nesta tela (não são salvas).</small></p>`,
+    Notícias:()=>`<h2>Editor de notícia</h2><form id="fn" novalidate><label for="nt">Título</label><input id="nt" style="width:100%"><label for="ntx">Texto</label><textarea id="ntx" rows="4" style="width:100%"></textarea><p class="erro" id="ne"></p><button class="btn">Salvar rascunho</button></form><div id="nok"></div>`,
+    Inscrições:()=>`<h2>Inscrições</h2>${vazio("Nenhuma inscrição recebida (demonstração).")}`,
+    Dízimo:()=>`<h2>Dízimo</h2><div class="pendente">🔒 Módulo privado. No sistema real, só usuários autorizados acessarão, com controle feito no servidor. Sem dados reais aqui.</div>${vazio("Nenhum dizimista cadastrado.")}`
+  };
+  const mostrar=a=>{
+    $("#aba-out").innerHTML=conteudo[a]();
+    document.querySelectorAll("[data-aba]").forEach(b=>b.classList.toggle("ativo",b.dataset.aba===a));
+    $("#aba-out").querySelectorAll("[data-del]").forEach(b=>b.onclick=()=>{if(confirm("Excluir este evento?")){EVENTOS.splice(EVENTOS.findIndex(e=>e.id==b.dataset.del),1);mostrar(a)}});
+    const fn=$("#fn"); if(fn) fn.onsubmit=ev=>{ev.preventDefault();
+      if(!$("#nt").value.trim()||!$("#ntx").value.trim()){$("#ne").textContent="Preencha título e texto.";return}
+      $("#ne").textContent="";$("#nok").innerHTML='<div class="ok">Rascunho salvo (demonstração).</div>';fn.reset()};
+  };
+  document.querySelectorAll("[data-aba]").forEach(b=>b.onclick=()=>mostrar(b.dataset.aba));
+  $("#sair").onclick=()=>{location.hash="#inicio"};
+  mostrar("Resumo");
+}
+
+/* ---------- Interações de cada página ---------- */
+function ligar(p){
+  if(p==="agenda"){
+    let modo="lista";
+    const out=()=>{
+      const c=$("#fcat").value, lista=EVENTOS.filter(e=>!c||e.cat===c);
+      if(!lista.length){$("#agenda-out").innerHTML=vazio("Nenhum evento encontrado.");return}
+      if(modo==="lista"){$("#agenda-out").innerHTML=`<div class="grade">${lista.map(cardEvento).join("")}</div>`;return}
+      const ano=2026,mes=9,ini=new Date(ano,mes,1).getDay(),dias=new Date(ano,mes+1,0).getDate();
+      let h=["D","S","T","Q","Q","S","S"].map(d=>`<div class="cab">${d}</div>`).join("")+"<div></div>".repeat(ini);
+      for(let d=1;d<=dias;d++){const ev=lista.filter(e=>e.data===`2026-10-${String(d).padStart(2,"0")}`);h+=`<div><b>${d}</b>${ev.map(e=>`<span>${e.hora}</span>`).join("")}</div>`}
+      $("#agenda-out").innerHTML=`<h3>Outubro de 2026</h3><div class="cal">${h}</div>`;
+    };
+    $("#fcat").onchange=out;$("#vl").onclick=()=>{modo="lista";out()};$("#vc").onclick=()=>{modo="cal";out()};out();
+  }
+  if(p==="noticias"){const f=()=>{const q=$("#busca").value.toLowerCase(),l=NOTICIAS.filter(n=>(n.titulo+n.texto).toLowerCase().includes(q));$("#n-out").innerHTML=l.length?l.map(cardNoticia).join(""):vazio("Nenhuma notícia encontrada.")};$("#busca").oninput=f;f()}
+  if(p==="comunidades"){const f=()=>{const q=$("#busca").value.toLowerCase(),t=$("#ftipo").value,l=COMUNIDADES.filter(c=>c.nome.toLowerCase().includes(q)&&(!t||c.tipo===t));$("#c-out").innerHTML=l.length?l.map(cardCom).join(""):vazio("Nenhuma comunidade encontrada.")};$("#busca").oninput=f;$("#ftipo").onchange=f;f()}
+  if(p==="galeria"){const f=()=>{const a=$("#fano").value,l=FOTOS.filter(x=>!a||x.ano==a);$("#g-out").innerHTML=l.length?l.map(x=>`<button class="card" data-foto="${x.id}" style="cursor:pointer;text-align:left">${x.src?`<img src="${esc(x.src)}" alt="${esc(x.alt)}" style="width:100%">`:'<div class="foto">Foto de exemplo</div>'}<b>${x.legenda}</b><br><small>${x.ano} · ${x.tipo}</small></button>`).join(""):vazio("Sem fotos neste filtro.");
+      document.querySelectorAll("[data-foto]").forEach(b=>b.onclick=()=>{const x=FOTOS.find(y=>y.id==b.dataset.foto);$("#modal-corpo").innerHTML=`<div class="foto" style="height:240px">Foto ampliada (exemplo)</div><p>${x.legenda}</p>`;$("#modal").showModal()})};$("#fano").onchange=f;f()}
+  if(p==="inscricoes") document.querySelectorAll("[data-insc]").forEach(b=>b.onclick=()=>{
+    const a=ATIVIDADES.find(x=>x.id==b.dataset.insc);
+    $("#form-area").innerHTML=`<h2>Inscrição: ${a.titulo}</h2><form id="fi" novalidate><label for="nm">Nome completo</label><input id="nm" style="width:100%"><label for="ct">Telefone ou e-mail</label><input id="ct" style="width:100%">
+      ${a.menor?'<label><input type="checkbox" id="rs"> Sou responsável e autorizo a participação do menor</label>':""}<p class="erro" id="fe"></p><button class="btn">Enviar inscrição</button></form>`;
+    $("#fi").onsubmit=ev=>{ev.preventDefault();
+      if(!$("#nm").value.trim()||!$("#ct").value.trim()){$("#fe").textContent="Preencha nome e contato.";return}
+      if(a.menor&&!$("#rs").checked){$("#fe").textContent="É necessária a autorização do responsável.";return}
+      $("#form-area").innerHTML='<div class="ok">Inscrição enviada com sucesso (demonstração: nada foi salvo).</div>'};
+    $("#form-area").scrollIntoView({behavior:"smooth"});
+  });
+  if(p==="admin") $("#login").onsubmit=ev=>{ev.preventDefault();
+    if(!$("#u").value.trim()||!$("#s").value.trim()){$("#le").textContent="Informe usuário e senha.";return}
+    painel()};
+}
+
+/* ---------- Roteador (troca de página pelo # da URL) ---------- */
+function rota(){
+  const h=(location.hash||"#inicio").slice(1);
+  let html,pg=h;
+  if(h.startsWith("noticia-")){const n=NOTICIAS.find(x=>x.id==h.split("-")[1]);html=n?`<a href="#noticias">← Voltar</a><h1>${esc(n.titulo)}</h1><small>${fmt(n.data)} · ${esc(n.autor)}</small><div class="foto" style="height:200px;margin-top:12px">Imagem de capa</div><p>${esc(n.texto)}</p>`:vazio("Notícia não encontrada.")}
+  else if(h.startsWith("comunidade-")){const c=COMUNIDADES.find(x=>x.id==h.split("-")[1]);html=c?`<a href="#comunidades">← Voltar</a><h1>${esc(c.nome)}</h1><div class="foto" style="height:200px">Foto da comunidade</div><p><b>Padroeiro(a):</b> ${c.padroeiro}</p><p><b>Histórico:</b> ${c.hist}</p><p><b>Horários:</b> ${c.horario}</p>${pendente("Endereço, mapa e contato")}`:vazio("Comunidade não encontrada.")}
+  else if(paginas[h]) html=paginas[h]();
+  else html=`<h1>Página não encontrada</h1>${vazio("Esta página não existe.")}<a class="btn" href="#inicio">Voltar ao início</a>`;
+  app.innerHTML=html; ligar(pg); window.scrollTo(0,0);
+  document.querySelectorAll("nav a").forEach(a=>a.classList.toggle("ativo",a.getAttribute("href")==="#"+h));
+  $("#menu").classList.remove("aberto");
+}
+window.addEventListener("hashchange",rota);
+$("#menuBtn").onclick=()=>{const n=$("#menu");n.classList.toggle("aberto");$("#menuBtn").setAttribute("aria-expanded",n.classList.contains("aberto"))};
+$("#fechar").onclick=()=>$("#modal").close();
+rota();
+
+/* TELA DE BOAS-VINDAS: o botão "Entrar" apenas esconde a fachada e mostra o site. */
+$("#entrar").onclick=()=>{$("#boas-vindas").classList.add("oculta");window.scrollTo(0,0)};
+$("#entrar").focus();
+</script>
+</body>
+</html>
